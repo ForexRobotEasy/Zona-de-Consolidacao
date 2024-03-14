@@ -1,0 +1,105 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                                  Zona de Consolidacao |
+//|                                   Developer's Site - forexroboteasy.com |
+//|                                                 Developed by Forex Robot Easy Team |
+//+------------------------------------------------------------------+
+
+// Include necessary libraries
+#include <Trade\Trade.mqh>
+
+// Define input parameters
+input int Intervalo_de_preco = 20; // Price interval for analysis
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+   // Add initialization code here
+   return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+   // Add deinitialization code here
+}
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+   // Add tick function code here
+   // Identify consolidation zones based on historical price data
+   double consolidationZone = CalculateConsolidationZone(Symbol(), Period(), Intervalo_de_preco);
+   
+   // Highlight the most significant consolidation zone on the histogram
+   HighlightConsolidationZone(consolidationZone);
+   
+   // Check for entry and exit points for trading strategies based on consolidation zones
+   if (IsEntrySignal(consolidationZone))
+   {
+      // Enter a trade
+      EnterTrade();
+   }
+   else if (IsExitSignal(consolidationZone))
+   {
+      // Exit the trade
+      ExitTrade();
+   }
+}
+
+//+------------------------------------------------------------------+
+//| Calculate consolidation zone based on historical price data      |
+//+------------------------------------------------------------------+
+double CalculateConsolidationZone(const string symbol, const ENUM_TIMEFRAMES timeframe, const int intervalo)
+{
+   // Add code to calculate consolidation zone here
+   // Return the calculated consolidation zone value
+}
+
+//+------------------------------------------------------------------+
+//| Highlight the most significant consolidation zone on the histogram|
+//+------------------------------------------------------------------+
+void HighlightConsolidationZone(const double consolidationZone)
+{
+   // Add code to highlight consolidation zone on histogram here
+}
+
+//+------------------------------------------------------------------+
+//| Check for entry signal based on consolidation zone                |
+//+------------------------------------------------------------------+
+bool IsEntrySignal(const double consolidationZone)
+{
+   // Add code to check for entry signal here
+   // Return true if there is an entry signal, otherwise return false
+}
+
+//+------------------------------------------------------------------+
+//| Check for exit signal based on consolidation zone                 |
+//+------------------------------------------------------------------+
+bool IsExitSignal(const double consolidationZone)
+{
+   // Add code to check for exit signal here
+   // Return true if there is an exit signal, otherwise return false
+}
+
+//+------------------------------------------------------------------+
+//| Enter a trade                                                    |
+//+------------------------------------------------------------------+
+void EnterTrade()
+{
+   // Add code to enter a trade here
+}
+
+//+------------------------------------------------------------------+
+//| Exit the trade                                                   |
+//+------------------------------------------------------------------+
+void ExitTrade()
+{
+   // Add code to exit the trade here
+}
